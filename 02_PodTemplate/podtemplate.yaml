@@ -4,11 +4,11 @@ metadata:
   name: hello
 spec:
   template:
-    # This is the pod template
+    # This is the pod template.
     spec:
       containers:
       - name: hello
         image: busybox:1.28
         command: ['sh', '-c', 'echo "Hello, Kubernetes!" && sleep 10']
       restartPolicy: OnFailure
-    # The pod template ends here
+    # The pod template ends here.
