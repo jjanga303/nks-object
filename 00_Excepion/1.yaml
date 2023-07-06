@@ -8,3 +8,4 @@ spec:
   ports: - port: 9000
 targetPort: 8080
 type: ClusterIP
+#
