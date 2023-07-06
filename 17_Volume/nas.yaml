@@ -1,0 +1,38 @@
+#apiVersion: apps/v1
+#kind: Deployment
+#metadata:
+#  name: nas-nginx
+#spec:
+#  replicas: 1
+#  selector:
+#    matchLabels:
+#      app: nas-nginx
+#  template:
+#    metadata:
+#      labels:
+#        app: nas-nginx
+#    spec:
+#      containers:
+#      - name: nas-nginx
+#        image: k8s.gcr.io/nginx-slim:0.8
+#        ports:
+#        - containerPort: 80
+#        volumeMounts:
+#        - name: nas-csi-pvc
+#          mountPath: /nas
+#      volumes:
+#      - name: nas-csi-pvc 
+#        persistentVolumeClaim:
+#          claimName: nas-csi-pvc
+#---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nas-csi-pvc
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Gi
+  storageClassName: nks-nas-csi
